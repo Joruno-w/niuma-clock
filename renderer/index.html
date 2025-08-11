@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>牛马时钟</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="app" class="app">
+    <header class="topbar">
+      <div class="logo">🐮⏰</div>
+      <div class="progress-wrap">
+        <div id="topProgress" class="progress"></div>
+      </div>
+      <button id="btnSettings" class="btn">设置</button>
+    </header>
+
+    <section class="countdown card">
+      <div class="title">距离下班</div>
+      <div class="digits">
+        <span id="d_day" class="digit">0</span>
+        <span class="unit">天</span>
+        <span id="d_hour" class="digit">0</span>
+        <span class="unit">时</span>
+        <span id="d_min" class="digit">0</span>
+        <span class="unit">分</span>
+        <span id="d_sec" class="digit">0</span>
+        <span class="unit">秒</span>
+      </div>
+      <div class="sub">下班时间：<span id="offTime">--:--</span></div>
+    </section>
+
+    <section class="income card">
+      <div class="grid">
+        <div>
+          <div class="label">今日已赚</div>
+          <div id="v_today" class="value">¥0.00</div>
+        </div>
+        <div>
+          <div class="label">本月已赚</div>
+          <div id="v_month" class="value">¥0.00</div>
+        </div>
+        <div>
+          <div class="label">今年已赚</div>
+          <div id="v_year" class="value">¥0.00</div>
+        </div>
+      </div>
+      <div class="footer">
+        <span id="v_hourly">时薪：¥0/时</span>
+        <span id="v_employed" class="right"></span>
+      </div>
+    </section>
+
+    <dialog id="dlg">
+      <form method="dialog" class="dialog">
+        <div class="dialog-head">
+          <button id="btnBack" class="btn" value="cancel">返回</button>
+          <div>设置</div>
+          <button id="btnSave" class="btn primary" value="default">保存</button>
+        </div>
+        <div class="dialog-body">
+          <label>入职日期</label>
+          <div class="row">
+            <input id="hireYear" type="number" placeholder="年" />
+            <input id="hireMonth" type="number" placeholder="月" />
+            <input id="hireDay" type="number" placeholder="日" />
+          </div>
+
+          <label>月薪</label>
+          <input id="salary" type="number" placeholder="17000" />
+
+          <label>上班时间</label>
+          <div class="row">
+            <input id="start" type="time" />
+            <span class="sep">—</span>
+            <input id="end" type="time" />
+          </div>
+
+          <label>工作日</label>
+          <div class="week">
+            <label><input type="checkbox" value="1" />一</label>
+            <label><input type="checkbox" value="2" />二</label>
+            <label><input type="checkbox" value="3" />三</label>
+            <label><input type="checkbox" value="4" />四</label>
+            <label><input type="checkbox" value="5" />五</label>
+            <label><input type="checkbox" value="6" />六</label>
+            <label><input type="checkbox" value="0" />日</label>
+          </div>
+
+          <label>显示收入</label>
+          <div class="row">
+            <label><input name="showIncome" type="radio" value="1" checked />显示</label>
+            <label><input name="showIncome" type="radio" value="0" />隐藏</label>
+          </div>
+
+          <div class="divider"></div>
+
+          <label>主题</label>
+          <div class="row">
+            <select id="themePreset">
+              <option value="coffee">咖啡</option>
+              <option value="light">浅色</option>
+              <option value="dark">暗色</option>
+              <option value="emerald">翡翠</option>
+              <option value="custom">自定义</option>
+            </select>
+          </div>
+          <div id="customThemeFields" class="colors">
+            <label>主色<input id="c_brand" type="color" value="#b08b59" /></label>
+            <label>背景<input id="c_bg" type="color" value="#f7f5f2" /></label>
+            <label>卡片<input id="c_card" type="color" value="#ffffff" /></label>
+            <label>正文<input id="c_text" type="color" value="#3a3a3a" /></label>
+            <label>次要<input id="c_muted" type="color" value="#8a8a8a" /></label>
+            <label>边框<input id="c_border" type="color" value="#e6e2dc" /></label>
+          </div>
+        </div>
+      </form>
+    </dialog>
+  </div>
+
+  <script src="renderer.js" type="module"></script>
+</body>
+
+</html>
