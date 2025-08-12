@@ -1,7 +1,7 @@
 {
   "name": "niuma-clock",
   "version": "1.0.0",
-  "description": "跨平台的牛马时钟（Electron）",
+  "description": "牛马时钟",
   "main": "main.js",
   "type": "module",
   "scripts": {
@@ -23,7 +23,9 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "29.4.0",
-    "electron-builder": "24.13.3"
+    "electron-builder": "24.13.3",
+    "png2icons": "^2.0.1",
+    "sharp": "^0.34.3"
   },
   "build": {
     "appId": "com.example.niuma.clock",
@@ -42,18 +44,21 @@
       "mirror": "https://npmmirror.com/mirrors/electron/"
     },
     "mac": {
+      "icon": "assets/app.icns",
       "target": [
         "dmg",
         "zip"
       ]
     },
     "win": {
+      "icon": "assets/app.ico",
       "target": [
         "nsis",
         "zip"
       ]
     },
     "linux": {
+      "icon": "assets/app.png",
       "target": [
         "AppImage",
         "deb",

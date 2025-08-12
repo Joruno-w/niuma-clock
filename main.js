@@ -14,7 +14,7 @@ if (!gotTheLock) {
 let mainWindow = null
 
 function createWindow() {
-  const iconPath = path.join(__dirname, 'assets', 'icon.png')
+  const iconPath = path.join(__dirname, 'assets', 'app.png')
   const icon = nativeImage.createFromPath(iconPath)
 
   mainWindow = new BrowserWindow({
@@ -72,6 +72,11 @@ function buildMenu() {
 app.whenReady().then(() => {
   buildMenu()
   createWindow()
+  // 在 macOS 开发/运行时设置 Dock 图标（打包后以 .icns 为准）
+  if (process.platform === 'darwin') {
+    const dockIcon = nativeImage.createFromPath(path.join(__dirname, 'assets', 'app.png'))
+    if (!dockIcon.isEmpty()) app.dock.setIcon(dockIcon)
+  }
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
